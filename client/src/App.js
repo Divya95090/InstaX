@@ -8,12 +8,12 @@ import { useSelector } from "react-redux"; // Make sure to import useSelector
 import Dashboard from "./pages/Dashboard";
 import DisplayVideo from "./pages/DisplayVideo";
 import Search from "./pages/Search";
-import Favourites from "./pages/Favourites";
 import VideoDetails from "./pages/VideoDetails";
 import Profile from "./pages/Profile";
 import Signup from "./components/SignUp"; // Corrected import paths
 import Signin from "./components/Signin"; // Corrected import paths
 import Upload from "./components/Upload";
+import Saved from "./pages/Saved";
 
 const Container = styled.div`
   display: flex;
@@ -52,6 +52,7 @@ function App() {
               setMenuOpen={setMenuOpen}
               setDarkMode={setDarkMode}
               darkMode={darkMode}
+              setUploadOpen={setUploadOpen}
             />
           )}
           <Frame>
@@ -60,7 +61,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/favourites" element={<Favourites />} />
+              <Route path="/saved" element={<Saved />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/video/:id" element={<VideoDetails />} />
               <Route path="/showvideos/:type" element={<DisplayVideo />} />
@@ -69,6 +70,7 @@ function App() {
         </Container>
         {SignUpOpen && <Signup setSignUpOpen={setSignUpOpen} />} {/* Conditional rendering for Signup */}
         {SignInOpen && <Signin setSignInOpen={setSignInOpen} />} {/* Conditional rendering for Signin */}
+        {uploadOpen && <Upload setUploadOpen={setUploadOpen} />}
       </BrowserRouter>
     </ThemeProvider>
   );
